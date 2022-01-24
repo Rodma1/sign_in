@@ -1179,7 +1179,7 @@ sign_in_date</ColNames>
       <Comment>业务编码</Comment>
       <DataType>varchar(32)|0s</DataType>
     </column>
-    <column id="351" parent="325" name="user_id">
+    <column id="351" parent="325" name="user_name">
       <Position>3</Position>
       <Comment>签到用户id</Comment>
       <DataType>varchar(32)|0s</DataType>
@@ -1268,7 +1268,7 @@ sign_in_date</ColNames>
       <Type>btree</Type>
     </index>
     <index id="368" parent="325" name="user_date">
-      <ColNames>user_id
+      <ColNames>user_name
 sign_in_date</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
@@ -1283,7 +1283,7 @@ sign_in_date</ColNames>
       <UnderlyingIndexName>encode</UnderlyingIndexName>
     </key>
     <key id="371" parent="325" name="user_date">
-      <ColNames>user_id
+      <ColNames>user_name
 sign_in_date</ColNames>
       <UnderlyingIndexName>user_date</UnderlyingIndexName>
     </key>

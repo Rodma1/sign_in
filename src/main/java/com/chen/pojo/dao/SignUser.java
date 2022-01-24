@@ -24,7 +24,7 @@ public class SignUser {
 //   持续签到时间
    private Long continueSign;
    private Integer continueDay;
-   private Date creteTime;
+   private Date createTime;
    private Date updateTime;
    private Integer param1;
 
