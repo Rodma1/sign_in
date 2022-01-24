@@ -1,5 +1,6 @@
 package com.chen.pojo.dao;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,7 +15,10 @@ public class SignUser {
 //   用户名
    private String userName;
 //   签到时间
-   private String signInDate;
+// 指定为北京时间,将时间加八个小时pattern = "yyyy-MM-dd"
+// :https://blog.csdn.net/ABestRookie/article/details/116637703
+   @JsonFormat(timezone="GMT+8")
+   private Date signInDate;
 //   获取金币
    private Integer rewardMoney;
 //   持续签到时间
