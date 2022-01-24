@@ -32,4 +32,14 @@ public class SignUserController {
     public List<SignUserHistory> selectSignInHistory(@Validated String userName){
         return signUserService.listSignInHistory(userName);
     }
+
+    /**
+     * 用户今日是否签到
+     * @param userName
+     * @return
+     */
+    @GetMapping("/todaysign")
+    public String selectTodaySignIn(@Validated String userName){
+        return signUserService.UserTodaySignIn(userName);
+    }
 }

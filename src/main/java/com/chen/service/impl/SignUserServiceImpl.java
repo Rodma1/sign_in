@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-
+import com.chen.enums.SignInEnum;
 @Slf4j
 @Service
 public class SignUserServiceImpl implements SignUserService {
@@ -36,9 +36,9 @@ public class SignUserServiceImpl implements SignUserService {
             SignUser signUser1=new SignUser();
             signUser1.setUserName(userName);
 //            设置连续签到天数1
-            signUser1.setContinueSign((long)1);
+            signUser1.setContinueSign((long)SignInEnum.CONTINUITEDAYONE.type);
 //            金币数加一
-            signUser1.setRewardMoney(1);
+            signUser1.setRewardMoney(SignInEnum.MONEY.type);
 //            设置时间
             signUser1.setSignInDate(DateUtils.getTodayDate());
             //            插入到数据库中
@@ -77,6 +77,24 @@ public class SignUserServiceImpl implements SignUserService {
     @Override
     public List<SignUserHistory> listSignInHistory(String userName) {
         return signUserHistoryMapper.findListByUserName(userName);
+    }
+
+    @Override
+    public String UserTodaySignIn(String userName) {
+        //        根据userName查询用户今天是否签到过
+        SignUser signUser=signUserMapper.findByUserName(userName);
+        if (signUser==null){
+            return "你未签到过";
+        }
+        //        获取登录的时间
+        long signInDateTime=signUser.getSignInDate().getTime();
+//        如果和今天的时间一样说明已经签到过了
+        if (signInDateTime==DateUtils.getTodayDate().getTime()){
+            log.info("今天已经签到过了");
+            return SignInEnum.SIGNED.content;
+        }
+        return SignInEnum.UNSGIN.content;
+
     }
 
     //    查看是昨天是否签到了

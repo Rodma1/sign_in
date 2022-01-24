@@ -20,4 +20,10 @@ public interface SignUserService {
      */
     List<SignUserHistory> listSignInHistory(String userName);
 
+    /**
+     * 用户今日是否签到
+     * @param userName
+     * @return
+     */
+    String UserTodaySignIn(String userName);
 }
